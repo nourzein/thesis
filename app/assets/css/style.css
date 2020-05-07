@@ -88,13 +88,10 @@ h2 {
   padding: 0px 10px 9px 12px;
   margin-bottom: 24px;
   cursor: pointer;
-<<<<<<< HEAD
 }
 .icon {
   transition: 0.3s stroke ease-in-out;
   /* text-decoration: underline; */
-=======
->>>>>>> 0a22fee6776f95e31e4cba41615515b3a47b2a0e
 }
 .section-title:hover {
   /* font-size: 23px; */
