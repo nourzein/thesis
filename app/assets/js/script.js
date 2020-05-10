@@ -465,6 +465,7 @@ function runBenefitsCal() {
   }
   let totalRain = 28.02 * totalAreas;
   let greenRain = 28.02 * areas * 0.5;
+  let greenHeat = 28.02 * areas * 0.3;
   let formatedArea = formatNumber(areas);
   let gallonsRetained = formatNumber(totalRain - greenRain);
   let areaPercentage = new Intl.NumberFormat("en-IN", {
@@ -481,6 +482,11 @@ function runBenefitsCal() {
     percent: "JPY"
   }).format(1 - (totalRain - greenRain) / totalRain);
 
+  let heatPercentage = new Intl.NumberFormat("en-IN", {
+    style: "percent",
+    percent: "JPY"
+  }).format(1 - (totalRain - greenHeat) / totalRain);
+
   document.getElementById("habitat-benefit").innerHTML = formatedArea;
   document.getElementById(
     "habitat-benefit-percentage"
@@ -488,6 +494,7 @@ function runBenefitsCal() {
   document.getElementById(
     "water-benefit-percentage"
   ).innerHTML = waterPercentage;
+  document.getElementById("heat-benefit-percentage").innerHTML = heatPercentage;
   document.getElementById("water-benefit").innerHTML = gallonsRetained;
   document.getElementById("area-stats").innerHTML = areaPercentage;
   runPotentialDonut(totalAreas, areas);
@@ -506,23 +513,36 @@ var svg = d3
   .select(".pBar")
   .append("svg")
   .attr("width", w + margin.left + margin.right)
-  .attr("height", h + margin.left + margin.right)
+  .attr("height", h + margin.left + margin.right);
+var group = svg
   .append("g")
   .attr("id", "bigG")
   .attr("transform", "translate(" + margin.top + ", 0 )");
 // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// svg
+//   .append("defs")
+//   .append("pattern")
+//   .attr("id", "pattern-chevron")
+//   .attr("x", 0)
+//   .attr("y", 0)
+//   // .attr("patternUnits", "objectsBoundingBox")
+//   .attr("width", 10)
+//   .attr("height", 1)
+//   .append("image")
+//   // .attr("x", 0)
+//   // .attr("y", 0)
+//   // .attr("viewbox", "0 0 10 10")
+//   // .attr("width", 225)
+//   // .attr("height", 540)
+//   .attr("xlink:href", "./images/tile.png");
 
+// svg.select("defs").append("pattern")
 var xScale = d3
   .scaleBand()
   .range([0, w])
   .padding(0.2);
 
-xAxis = svg.append("g").attr("transform", "translate(0," + h + ")");
-
-// .call(d3.axisBottom(xScale))
-// .selectAll("text")
-// .attr("transform", "translate(-10,0)rotate(-45)")
-// .style("text-anchor", "end");
+xAxis = group.append("g").attr("transform", "translate(0," + h + ")");
 
 var yScale = d3
   .scaleLinear()
@@ -600,14 +620,19 @@ function runBarPotential(dataset, newCityData) {
   //   .attr("font-family", "sans-serif")
   //   .attr("fill", "white")
 
-  var graph = svg.selectAll("rect").data(sortedData);
+  var graph = group.selectAll("rect").data(sortedData);
 
   graph
     .enter()
     .append("rect")
     .attr("width", xScale.bandwidth())
     .style("opacity", 0.7)
-    .attr("fill", "#6ae27a")
+    .attr(
+      "fill",
+      //"url(#pattern-chevron)")
+      //.attr("background-size", "100% 100%")
+      "#6ae27a"
+    )
     .on("mouseover", function(d) {
       d3.select(this)
         // .style("stroke-width", "3")
@@ -665,7 +690,7 @@ function runBarPotential(dataset, newCityData) {
       return result < 0 ? 0 : result;
     });
 
-  var texts = svg.selectAll(".text").data(sortedData);
+  var texts = group.selectAll(".text").data(sortedData);
   texts
     .enter()
     .append("text")

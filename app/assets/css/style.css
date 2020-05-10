@@ -18,6 +18,7 @@ img {
   margin: 0;
   font-family: "Lato", sans-serif;
 }
+
 /* .both {
   display: flex;
 } */
@@ -137,13 +138,6 @@ h2 {
 .GR {
   color: #76db80;
 }
-/* .left-shade {
-  fill: #97b57f;
-}
-
-.right-shade {
-  fill: #c2deab;
-} */
 
 #container {
   display: flex;
@@ -315,16 +309,6 @@ h2 {
 .domain {
   color: black;
 }
-/* #map-filter-button:hover ~ .filtering {
-  display: block;
-} */
-/* input[type="checkbox"]:checked + label {
-  color: #75ff98;
-} */
-
-/* input[type="checkbox"]:checked {
-  box-shadow: 0 0 0 3px hotpink;
-} */
 
 .dashboard {
   color: white;
@@ -332,12 +316,11 @@ h2 {
   /* top: 110px; */
   /* background: rgba(63, 65, 88, 0.27); */
   padding: 0px 10px 0px 12px; /* top, right, bottom, left */
-  margin-top: 50px;
-  margin-bottom: 70px;
-  /* border-radius: 10px;
-  border-style: solid;
-  border-color: rgba(63, 65, 88, 0.09); */
-  /* margin-bottom: 5px; */
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+#enviro-benefit {
+  margin-top: 90px;
 }
 
 p {
@@ -357,32 +340,22 @@ p {
   background: #19191f;
   bottom: 0;
   left: 0;
-  /* left: 50px; */
-  /* border-radius: 10px;
-  border-style: solid;
-  border-color: rgba(63, 65, 88, 0.2); */
+
   padding: 8px 10px 8px 8px;
   /* background: rgba(63, 65, 88, 0.87); */
 }
 
-/* #citywide-percentage {
-  border-bottom: 1px solid;
-  color: #6ae27a;
-  /* #ad87f5; */
-/* background: rgba(93, 95, 122, 0.2);
-} */
 #area-stats,
 #difference {
   color: #45ed5b;
   border-bottom: 1px dashed;
-  /* background: rgba(45, 45, 74, 0.9); */
-  /* rgba(93, 95, 122, 0.3); */
+
   font-size: 19px;
 }
 
 #_6 {
+  /* fill: url(#pattern-chevron); */
   fill: rgb(124, 111, 242, 0.8);
-  /* stroke-width: 3; */
 }
 .tooltip {
   position: absolute;
@@ -397,29 +370,6 @@ p {
   color: white;
 }
 
-/* #geography,
-#viewbox {
-  border-bottom: 1px solid;
-} */
-
-/* #water-benefit, */
-/* #water-benefit-percentage {
-  border-bottom: 1px dashed #42e6f5;
-  font-size: 20px;
-  padding: 5px; */
-/* border-color: rgba(63, 65, 88, 0.09); */
-/* height: 70px;
-  background: rgba(93, 95, 122, 0.2);
-} */
-
-/* {
-  color: #ff4d00;
-  border-bottom: 1px dashed #f57842;
-  height: 70px;
-  background: rgba(93, 95, 122, 0.2);
-  padding: 5px;
-} */
-
 .water {
   background: rgba(39, 84, 176, 0.5);
 }
@@ -427,28 +377,21 @@ p {
 .heat {
   background: rgba(122, 31, 0, 0.5);
 }
-/* #water-benefit,
-#habitat-benefit,
-#heat-benefit {
-  font-size: 16px;
-} */
 
 #habitat-benefit-percentage {
-  font-size: 22px;
+  font-size: 26px;
   /* #ad87f5; */
   border-bottom: 1px dashed rgba(2, 158, 57);
   /* #61c995; */
   height: 70px;
-  /* color: rgba(175, 115, 255); */
-  /* color: rgba(2, 158, 57); */
 }
 #water-benefit-percentage {
-  font-size: 22px;
+  font-size: 26px;
   border-bottom: 1px dashed #2e74ff;
   height: 70px;
 }
 #heat-benefit-percentage {
-  font-size: 22px;
+  font-size: 26px;
   border-bottom: 1px dashed rgba(250, 92, 0);
   height: 70px;
 }
@@ -481,10 +424,10 @@ p {
   width: 30vw;
   /* bottom: 15px;
   right: 140px; */
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .scene {
-  width: 8.5vw;
+  width: 8.8vw;
   height: 110px;
   perspective: 600px;
   /* margin: 12px; */
@@ -545,25 +488,18 @@ p {
 #map_wrapper {
   right: 0px;
   width: 80vw;
-
-  /*margin-left: 30%; /* should match sideBar width */
   overflow: hidden;
   height: 100%;
   z-index: 1;
   bottom: 0px;
-  /* border-style: solid;
-  border-color: rgba(63, 65, 88, 0.09); */
 }
 
 #myMap {
   height: 99%;
   top: 10px;
   right: 0;
-  /* background: rgba(63, 65, 88, 0.27); */
+
   padding: 8px 10px 9px 20px;
-  /* border-style: solid;
-  border-color: rgba(63, 65, 88, 0.09); */
-  /* border-radius: 20px; */
 }
 
 .map-popup {
@@ -577,99 +513,3 @@ p {
   box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 25px 2px;
   background-color: rgba(21, 21, 28, 0.9);
 }
-/* .boxdraw {
-  background: rgba(56, 135, 190, 0.1);
-  border: 2px solid #3887be;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-} */
-
-/*
-.sidebar {
-  background-color: green;
-  display: none;
-  height: 100vh;
-  width: 25vw;
-  z-index: 9999;
-  transition: all 0.5s ease;
-}
-.sidebar header {
-  font-size: 22px;
-  color: black;
-}
-#check {
-  display: none;
-}
-label #btn,
-label #cancel {
-  position: absolute;
-  cursor: pointer;
-  background: black;
-  border-radius: 3px;
-  z-index: 9999;
-}
-label #btn {
-  left: 40px;
-  top: 25px;
-  font-size: 35px;
-  color: white;
-  padding: 6px 12px;
-  transition: all 0.5s;
-}
-label #cancel {
-  z-index: 1111;
-  left: -195px;
-  top: 17px;
-  font-size: 30px;
-  color: white;
-  padding: 4px 9px;
-  transition: all 0.5s ease;
-}
-#check:checked ~ .sidebar {
-  display: block;
-}
-#check:checked ~ #map_wrapper {
-  width: 75vw;
-  /*margin-left: 30%; /* should match sideBar width */
-/*
-  overflow: hidden; 
-  height: 100vh;
-  float: right; /* fill up main div height */
-/* z-index: 1;
-}
-/*
-#check:checked ~ label #btn {
-  left: 250px;
-  opacity: 0;
-  pointer-events: none;
-}
-#check:checked ~ label #cancel {
-  left: 195px;
-}
-#map_wrapper {
-  width: 99vw;
-  
-  overflow: hidden; 
-  height: 100vh;
-  float: right; 
-  z-index: 1;
-}
-/* #myMap {
-  /* width: 100vw; */
-/* height: 100%;} */
-/* float: right; */
-
-/* .title {
-  /* position: absolute;
-    right: 7%;
-    top: 20px; */
-/* text-align: center;
-  margin: 10px;
-  font-size: 23px;
-  color: green;
-
-  /* width: 300px; 
-}*/
