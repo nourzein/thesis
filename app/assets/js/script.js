@@ -494,7 +494,7 @@ function runBenefitsCal() {
   document.getElementById(
     "water-benefit-percentage"
   ).innerHTML = waterPercentage;
-  document.getElementById("heat-benefit-percentage").innerHTML = heatPercentage;
+  // document.getElementById("heat-benefit-percentage").innerHTML = heatPercentage;
   document.getElementById("water-benefit").innerHTML = gallonsRetained;
   document.getElementById("area-stats").innerHTML = areaPercentage;
   runPotentialDonut(totalAreas, areas);

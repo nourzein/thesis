@@ -36,12 +36,12 @@ app.use("/views", express.static(path.join(dir, "/app/assets/views")));
 //app.set("views", path.join(dir, "/app/assets/views"));
 
 const mongoUrl =
-  "mongodb+srv://" +
-  process.env.DB_USER +
-  ":" +
-  process.env.DB_PASS +
-  "@thesis-cluster-mcebm.mongodb.net/test?retryWrites=true&w=majority";
-// "mongodb://localhost:27017/thesis";
+  // "mongodb+srv://" +
+  // process.env.DB_USER +
+  // ":" +
+  // process.env.DB_PASS +
+  // "@thesis-cluster-mcebm.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb://localhost:27017/thesis";
 
 function serve() {
   app.listen(PORT, () => {

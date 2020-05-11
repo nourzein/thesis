@@ -124,6 +124,7 @@ h2 {
   line-height: 1.2;
   font-size: 18px;
   z-index: 99;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .intro-line {
@@ -316,7 +317,7 @@ h2 {
   /* top: 110px; */
   /* background: rgba(63, 65, 88, 0.27); */
   padding: 0px 10px 0px 12px; /* top, right, bottom, left */
-  margin-top: 70px;
+  margin-top: 60px;
   margin-bottom: 50px;
 }
 #enviro-benefit {
@@ -391,7 +392,7 @@ p {
   height: 70px;
 }
 #heat-benefit-percentage {
-  font-size: 26px;
+  font-size: 16px;
   border-bottom: 1px dashed rgba(250, 92, 0);
   height: 70px;
 }
@@ -454,6 +455,7 @@ p {
   position: absolute;
   height: 100%;
   width: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   cursor: pointer;
   font-size: 18px;
