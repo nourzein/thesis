@@ -1,37 +1,14 @@
-// function setupMap() {
-//   // create your own map
-//   mymap = L.map("myMap").setView([40.741531, -73.89912915039064], 13);
-
-//   // load a set of map tiles – choose from the different providers demoed here:
-//   // https://leaflet-extras.github.io/leaflet-providers/preview/
-//   tL = L.tileLayer(
-//     "https://api.mapbox.com/styles/v1/nourzein/ck8za6okk077x1ipcyyq0rb0a/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg",
-//     //"https://api.mapbox.com/styles/v1/nourzein/ck8za6okk077x1ipcyyq0rb0a/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg",
-//     //"https://api.mapbox.com/styles/v1/nourzein/ck8za6okk077x1ipcyyq0rb0a/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg",
-//     //"https://api.mapbox.com/styles/v1/nourzein/ck8rzwzbe0wsm1inzf3vgec50/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg",
-
-//     {
-//       attribution:
-//         'Map dataset &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//       maxZoom: 22,
-//       id: "mapbox.dark",
-//       accessToken:
-//         "pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg"
-//     }
-//   ).addTo(mymap);
-// }
-// setupMap();
 let viewboxData = 0.26;
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg";
 var map = new mapboxgl.Map({
   container: "myMap",
-  style: "mapbox://styles/nourzein/ck94g4max22861ijyss5hzwq2",
+  style: "mapbox://styles/nourzein/cka393eeg06p51ipjygpew5es",
   //"mapbox://styles/nourzein/ck8za6okk077x1ipcyyq0rb0a",
   center: [-73.9484596428768, 40.739295063897642],
   maxZoom: 22,
-  minZoom: 10,
+  minZoom: 12,
   zoom: 12,
   pitch: 20,
   bearing: 10
@@ -55,7 +32,7 @@ map.addControl(
   })
 );
 //pop ups
-map.on("click", "reduced-data2", function(e) {
+map.on("click", "reduced-data22", function(e) {
   var coordinates = e.features[0].geometry.coordinates.slice();
   var address = e.features[0].properties.address;
   var landuse = e.features[0].properties.landuse;
@@ -132,12 +109,12 @@ map.on("click", "reduced-data2", function(e) {
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.
-map.on("mouseenter", "reduced-data2", function() {
+map.on("mouseenter", "reduced-data22", function() {
   map.getCanvas().style.cursor = "pointer";
 });
 
 // Change it back to a pointer when it leaves.
-map.on("mouseleave", "reduced-data2", function() {
+map.on("mouseleave", "reduced-data22", function() {
   map.getCanvas().style.cursor = "";
 });
 
@@ -328,7 +305,7 @@ function drawMap(roofs) {
 
   if (roofs.length !== 0) {
     const roofFilter = ["match", ["get", "fid"], roofs, true, false];
-    map.setFilter("reduced-data2", roofFilter); //check if it returns a promise, asynchronous event
+    map.setFilter("reduced-data22", roofFilter); //check if it returns a promise, asynchronous event
     setTimeout(runBenefitsCal, 2000);
   } else {
     document.getElementById("queryComment").innerHTML = "No Green Roofs";
@@ -395,7 +372,7 @@ function getFilteredTotal(values) {
 function runBenefitsCal() {
   //if filterbox not display non {}
   var features = map.queryRenderedFeatures({
-    layers: ["reduced-data2"]
+    layers: ["reduced-data22"]
   });
   var features1 = map.queryRenderedFeatures({
     layers: ["bs"]
@@ -423,11 +400,17 @@ function runBenefitsCal() {
   });
 
   if (Number.isNaN(totalAreas)) {
-    viewboxData = 0;
+    // viewboxData = 0;
+    viewboxData = areas / 1667844556;
+  }
+  if (totalAreas === 0) {
+    totalAreas = 1667844556;
+    viewboxData = areas / totalAreas;
   } else {
     viewboxData = areas / totalAreas;
   }
-
+  console.log(areas);
+  console.log(totalAreas);
   let viewboxHeight = h - yScale(viewboxData);
   //console.log(viewboxHeight);
 
@@ -440,6 +423,14 @@ function runBenefitsCal() {
     .transition()
     .attr("y", yScale(viewboxData))
     .attr("height", viewboxHeight);
+
+  d3.select(".tooltip").text(
+    Math.round((1000 * viewboxData) / 10) +
+      "%" +
+      " of " +
+      "Map Region" +
+      " rooftops can be green roofs."
+  );
 
   d3.select("#text6")
     .transition()
@@ -558,8 +549,8 @@ var yScale = d3
 // yAxis = svg.append("g").attr("class", "myYaxis");
 
 var tooltip = d3
-  .select(".pBar")
-  .append("div")
+  .select("body")
+  .insert("div")
   .attr("class", "tooltip")
   .style("opacity", 0);
 
