@@ -87,7 +87,7 @@ h2 {
   font-size: 22px;
   width: 350px;
   padding: 0px 10px 9px 12px;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 .icon {
@@ -316,8 +316,8 @@ h2 {
   /* top: 110px; */
   /* background: rgba(63, 65, 88, 0.27); */
   padding: 0px 10px 0px 12px; /* top, right, bottom, left */
-  margin-top: 60px;
-  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 #enviro-benefit {
   margin-top: 90px;
@@ -330,6 +330,9 @@ p {
 .tops {
   padding: 0px 10px 0px 12px;
   font-size: 17px;
+}
+#benefit-disclaimer {
+  margin-bottom: 20px;
 }
 
 #legend {

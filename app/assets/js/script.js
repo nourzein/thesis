@@ -424,13 +424,13 @@ function runBenefitsCal() {
     .attr("y", yScale(viewboxData))
     .attr("height", viewboxHeight);
 
-  d3.select(".tooltip").text(
-    Math.round((1000 * viewboxData) / 10) +
-      "%" +
-      " of " +
-      "Map Region" +
-      " rooftops can be green roofs."
-  );
+  // d3.select(".tooltip").text(
+  //   Math.round((1000 * viewboxData) / 10) +
+  //     "%" +
+  //     " of " +
+  //     "Map Region" +
+  //     " rooftops can be green roofs."
+  // );
 
   d3.select("#text6")
     .transition()
@@ -579,6 +579,7 @@ function runBarPotential(dataset, newCityData) {
     count: newCityData
   };
   sortedData.push(newCity);
+
   let viewbox = {
     _id: "Map Region",
     count: viewboxData
@@ -624,7 +625,8 @@ function runBarPotential(dataset, newCityData) {
       //.attr("background-size", "100% 100%")
       "#6ae27a"
     )
-    .on("mouseover", function(d) {
+    .on("mouseover", function(d, i) {
+      // console.log(i, viewboxData);
       d3.select(this)
         // .style("stroke-width", "3")
         .style("opacity", 1);
@@ -634,11 +636,11 @@ function runBarPotential(dataset, newCityData) {
       // });
       tooltip
         .text(
-          Math.round((1000 * d.count) / 10) +
+          Math.round((1000 * (i === 6 ? viewboxData : d.count)) / 10) +
             "%" +
             " of " +
             d._id +
-            " rooftops can be green roofs."
+            "'s >1000ft² roofs can be green roofs."
         )
         .style("opacity", 0.9)
         .style("left", d3.event.pageX + 0 + "px")
