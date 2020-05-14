@@ -180,13 +180,13 @@ module.exports = function(app, db, dir) {
       .find(
         query,
         { projection: { _id: 1 } }
-        // $or: [
-        //   // { "properties.owner_type": "X" }
-        //   // { "properties.owner_type": { $ne: "C" } },
-        //   // { "properties.owner_type": { $ne: "M" } },
+        // ($or: [
+        //   { "properties.owner_type": "X" },
+        //   { "properties.owner_type": { $ne: "C" } },
+        //   { "properties.owner_type": { $ne: "M" } },
         //   { "properties.owner_type": "P" },
         //   { "properties.owner_type": null }
-        // ]
+        // ])
       )
       .toArray();
 
