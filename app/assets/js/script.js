@@ -127,7 +127,7 @@ function rotateCamera(timestamp) {
   requestAnimationFrame(rotateCamera);
 }
 
-let areaQ = [1000, 275000];
+let areaQ = [0, 275000];
 let heightQ = [5.89, 430.25];
 console.log(areaQ);
 
