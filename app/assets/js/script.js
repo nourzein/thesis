@@ -292,7 +292,7 @@ function runBoroughQuery() {
   })
     .then(result => {
       //console.log(JSON.stringify(result));
-      runBarPotential(result, 0.19);
+      runBarPotential(result, 0.34);
       //console.log(result);
     })
 
@@ -342,7 +342,7 @@ map.on("moveend", runBenefitsCal);
 //   runBenefitsCal();
 // });
 
-const cityPotential = 0.19;
+const cityPotential = 0.34;
 const citywideArea = 1667844556; //all area including potentials
 const citywideGreen = 329278955;
 const brooklynArea = 500803509;
@@ -350,7 +350,7 @@ const bronxArea = 223613971;
 const manhattanArea = 182854906;
 const queensArea = 578394481;
 const statenIslandArea = 182177690;
-let newCityPotential = 0.19; //gets updated by filtered total
+let newCityPotential = 0.34; //gets updated by filtered total
 
 let areas = 0; //potential areas
 let totalAreas = 0; //building areas
@@ -510,7 +510,7 @@ var svg = d3
 var group = svg
   .append("g")
   .attr("id", "bigG")
-  .attr("transform", "translate(" + margin.top + ", 0 )");
+  .attr("transform", "translate(" + margin.top + ", 10 )");
 // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 // svg
 //   .append("defs")

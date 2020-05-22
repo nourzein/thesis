@@ -1,6 +1,6 @@
 //Nour
 module.exports = function(app, db, dir) {
-  const DBCOLLECTION = "thesis_data";
+  const DBCOLLECTION = "full_data";
   let FILTEREDIDS = [];
   // simple route
   app.get("/", (req, res) => {
