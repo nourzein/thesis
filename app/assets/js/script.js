@@ -4,7 +4,8 @@ mapboxgl.accessToken =
   "pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg";
 var map = new mapboxgl.Map({
   container: "myMap",
-  style: "mapbox://styles/nourzein/cka393eeg06p51ipjygpew5es",
+  style: "mapbox://styles/nourzein/ckahcdrlo02rc1ipj9x3hku7w",
+  //"mapbox://styles/nourzein/cka393eeg06p51ipjygpew5es",
   //"mapbox://styles/nourzein/ck8za6okk077x1ipcyyq0rb0a",
   center: [-73.9484596428768, 40.739295063897642],
   maxZoom: 22,
@@ -32,7 +33,7 @@ map.addControl(
   })
 );
 //pop ups
-map.on("click", "reduced-data22", function(e) {
+map.on("click", "final-formapbox", function(e) {
   var coordinates = e.features[0].geometry.coordinates.slice();
   var address = e.features[0].properties.address;
   var landuse = e.features[0].properties.landuse;
@@ -109,12 +110,12 @@ map.on("click", "reduced-data22", function(e) {
 });
 
 // Change the cursor to a pointer when the mouse is over the places layer.
-map.on("mouseenter", "reduced-data22", function() {
+map.on("mouseenter", "final-formapbox", function() {
   map.getCanvas().style.cursor = "pointer";
 });
 
 // Change it back to a pointer when it leaves.
-map.on("mouseleave", "reduced-data22", function() {
+map.on("mouseleave", "final-formapbox", function() {
   map.getCanvas().style.cursor = "";
 });
 
@@ -126,14 +127,15 @@ function rotateCamera(timestamp) {
   requestAnimationFrame(rotateCamera);
 }
 
-let areaQ = [1000, 275000];
+let areaQ = [0, 275000];
 let heightQ = [5.89, 430.25];
+console.log(areaQ);
 
 function runSlider() {
   const w = 150;
   var scaleA = d3
     .scaleLinear()
-    .domain([1000, 275000])
+    .domain([0, 275000])
     .range([w, 0]);
 
   var sliderArea = d3
@@ -158,31 +160,31 @@ function runSlider() {
     .attr("transform", "translate(5,5)")
     .call(sliderArea);
 
-  var scaleH = d3
-    .scaleLinear()
-    .domain([5.89, 430.25])
-    .range([w, 0]);
+  // var scaleH = d3
+  //   .scaleLinear()
+  //   .domain([5.89, 430.25])
+  //   .range([w, 0]);
 
-  var sliderHeight = d3
-    .sliderBottom(scaleH)
-    .width(w)
-    .ticks(4)
-    .tickFormat(d3.format("~s"))
-    .default([5.89, 430.25])
-    .fill("#6ae27a")
-    .displayValue(false)
-    .on("onchange", val => {
-      d3.select("#valueHeight").text(val.map(d3.format("~s")).join("-"));
-      heightQ = val;
-    });
+  // var sliderHeight = d3
+  //   .sliderBottom(scaleH)
+  //   .width(w)
+  //   .ticks(4)
+  //   .tickFormat(d3.format("~s"))
+  //   .default([5.89, 430.25])
+  //   .fill("#6ae27a")
+  //   .displayValue(false)
+  //   .on("onchange", val => {
+  //     d3.select("#valueHeight").text(val.map(d3.format("~s")).join("-"));
+  //     heightQ = val;
+  //   });
 
-  d3.select("#sliderHeight")
-    .append("svg")
-    .attr("width", 200)
-    .attr("height", 70)
-    .append("g")
-    .attr("transform", "translate(30,30)")
-    .call(sliderHeight);
+  // d3.select("#sliderHeight")
+  //   .append("svg")
+  //   .attr("width", 200)
+  //   .attr("height", 70)
+  //   .append("g")
+  //   .attr("transform", "translate(30,30)")
+  //   .call(sliderHeight);
 }
 runSlider();
 
@@ -274,7 +276,7 @@ function runBuildingQuery() {
       drawMap(result.filteredIds);
       getFilteredTotal(result.areaByBorough);
       runBarPotential(result.areaByBorough, newCityPotential);
-      console.log("done");
+      // console.log("done");
       document.getElementById("screen").style.display = "none";
       document.getElementById("filtering").style.display = "block";
       document.getElementById("loading").style.display = "none";
@@ -305,7 +307,7 @@ function drawMap(roofs) {
 
   if (roofs.length !== 0) {
     const roofFilter = ["match", ["get", "fid"], roofs, true, false];
-    map.setFilter("reduced-data22", roofFilter); //check if it returns a promise, asynchronous event
+    map.setFilter("final-formapbox", roofFilter); //check if it returns a promise, asynchronous event
     setTimeout(runBenefitsCal, 2000);
   } else {
     document.getElementById("queryComment").innerHTML = "No Green Roofs";
@@ -372,7 +374,7 @@ function getFilteredTotal(values) {
 function runBenefitsCal() {
   //if filterbox not display non {}
   var features = map.queryRenderedFeatures({
-    layers: ["reduced-data22"]
+    layers: ["final-formapbox"]
   });
   var features1 = map.queryRenderedFeatures({
     layers: ["bs"]
@@ -409,8 +411,8 @@ function runBenefitsCal() {
   } else {
     viewboxData = areas / totalAreas;
   }
-  console.log(areas);
-  console.log(totalAreas);
+  // console.log(areas);
+  // console.log(totalAreas);
   let viewboxHeight = h - yScale(viewboxData);
   //console.log(viewboxHeight);
 
@@ -640,7 +642,7 @@ function runBarPotential(dataset, newCityData) {
             "%" +
             " of " +
             d._id +
-            "'s >1000ft² roofs can be green roofs."
+            "'s roofs can be green roofs."
         )
         .style("opacity", 0.9)
         .style("left", d3.event.pageX + 0 + "px")
