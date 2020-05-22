@@ -558,18 +558,19 @@ var tooltip = d3
 
 function runBarPotential(dataset, newCityData) {
   //included filtered dataset and view box
-  //onsole.log(dataset);
+  // console.log(dataset);
   const sortedData = dataset
     // .sort(function(b, a) {
     //   return a.count - b.count;
     // })// to sort by size
+    .filter(x => x._id)
+    .filter(x => x.count)
     .sort(function(a, b) {
       var textA = a._id.toUpperCase();
       var textB = b._id.toUpperCase();
-      return textA < textB ? -1 : textA > textB ? 1 : 0;
-    })
-    .filter(x => x._id)
-    .filter(x => x.count);
+      return textA === textB ? 0 : textA < textB ? -1 : 1;
+    });
+  // console.log(sortedData);
   // })
   sortedData[0].count = sortedData[0].count / bronxArea;
   sortedData[1].count = sortedData[1].count / brooklynArea;
