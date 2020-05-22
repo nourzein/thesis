@@ -60,7 +60,6 @@ module.exports = function(app, db, dir) {
             return item;
           });
         console.log(result);
-
         res.json(areaByBorough); //an object with two properities
       },
       err => res.status(500).json({ err: err })
