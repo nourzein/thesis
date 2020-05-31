@@ -4,9 +4,8 @@ mapboxgl.accessToken =
   "pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg";
 var map = new mapboxgl.Map({
   container: "myMap",
-  style: "mapbox://styles/nourzein/ckahcdrlo02rc1ipj9x3hku7w",
-  //"mapbox://styles/nourzein/cka393eeg06p51ipjygpew5es",
-  //"mapbox://styles/nourzein/ck8za6okk077x1ipcyyq0rb0a",
+  style: "mapbox://styles/nourzein/ckavjc8d627oj1jr2p62e7rrm",
+  //"mapbox://styles/nourzein/ckahcdrlo02rc1ipj9x3hku7w",
   center: [-73.9484596428768, 40.739295063897642],
   maxZoom: 22,
   minZoom: 12,
@@ -621,7 +620,7 @@ function runBarPotential(dataset, newCityData) {
     .enter()
     .append("rect")
     .attr("width", xScale.bandwidth())
-    .style("opacity", 0.7)
+    .style("opacity", 0.8)
     .attr(
       "fill",
       //"url(#pattern-chevron)")
@@ -651,7 +650,7 @@ function runBarPotential(dataset, newCityData) {
     })
     .on("mouseout", function(d) {
       tooltip.style("opacity", 0);
-      d3.select(this).style("opacity", 0.7);
+      d3.select(this).style("opacity", 0.8);
     })
     // .attr("fill", d => {
     //   var color = d.count * 10;
