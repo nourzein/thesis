@@ -1,6 +1,6 @@
 //Nour
-
 module.exports = function(app, db, dir) {
+  const DBCOLLECTION = "thesis_data";
   let FILTEREDIDS = [];
   // simple route
   app.get("/", (req, res) => {
@@ -35,7 +35,7 @@ module.exports = function(app, db, dir) {
       query = {};
     }
     return db
-      .collection("thesis_data")
+      .collection(DBCOLLECTION)
       .aggregate([
         { $match: query },
         {
@@ -60,7 +60,6 @@ module.exports = function(app, db, dir) {
             return item;
           });
         console.log(result);
-
         res.json(areaByBorough); //an object with two properities
       },
       err => res.status(500).json({ err: err })
@@ -175,11 +174,11 @@ module.exports = function(app, db, dir) {
     console.log(JSON.stringify(query));
 
     let promise1 = db
-      .collection("thesis_data")
+      .collection(DBCOLLECTION)
       //.findOne({});
       .find(
         query,
-        { projection: { _id: 1 } }
+        { projection: { pgid: 1, _id: 0 } }
         // ($or: [
         //   { "properties.owner_type": "X" },
         //   { "properties.owner_type": { $ne: "C" } },
@@ -195,7 +194,7 @@ module.exports = function(app, db, dir) {
     Promise.all([promise1, promise2]).then(
       values => {
         console.log("result", values[0].length);
-        FILTEREDIDS = values[0].map(obj => obj._id);
+        FILTEREDIDS = values[0].map(obj => obj.pgid);
         let areaByBorough = values[1]
           .filter(item => item._id != null)
           .map(item => {

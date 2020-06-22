@@ -4,9 +4,8 @@ mapboxgl.accessToken =
   "pk.eyJ1Ijoibm91cnplaW4iLCJhIjoiY2pkcGIzZmFpMGU2ODMzcGZrcjU0ZXAwbyJ9.XzdB3fcBU9caHJoJe3vSOg";
 var map = new mapboxgl.Map({
   container: "myMap",
-  style: "mapbox://styles/nourzein/ckahcdrlo02rc1ipj9x3hku7w",
-  //"mapbox://styles/nourzein/cka393eeg06p51ipjygpew5es",
-  //"mapbox://styles/nourzein/ck8za6okk077x1ipcyyq0rb0a",
+  style: "mapbox://styles/nourzein/ckavjc8d627oj1jr2p62e7rrm",
+  //"mapbox://styles/nourzein/ckahcdrlo02rc1ipj9x3hku7w",
   center: [-73.9484596428768, 40.739295063897642],
   maxZoom: 22,
   minZoom: 12,
@@ -292,7 +291,7 @@ function runBoroughQuery() {
   })
     .then(result => {
       //console.log(JSON.stringify(result));
-      runBarPotential(result, 0.19);
+      runBarPotential(result, 0.34);
       //console.log(result);
     })
 
@@ -342,7 +341,7 @@ map.on("moveend", runBenefitsCal);
 //   runBenefitsCal();
 // });
 
-const cityPotential = 0.19;
+const cityPotential = 0.34;
 const citywideArea = 1667844556; //all area including potentials
 const citywideGreen = 329278955;
 const brooklynArea = 500803509;
@@ -350,7 +349,7 @@ const bronxArea = 223613971;
 const manhattanArea = 182854906;
 const queensArea = 578394481;
 const statenIslandArea = 182177690;
-let newCityPotential = 0.19; //gets updated by filtered total
+let newCityPotential = 0.34; //gets updated by filtered total
 
 let areas = 0; //potential areas
 let totalAreas = 0; //building areas
@@ -510,7 +509,7 @@ var svg = d3
 var group = svg
   .append("g")
   .attr("id", "bigG")
-  .attr("transform", "translate(" + margin.top + ", 0 )");
+  .attr("transform", "translate(" + margin.top + ", 10 )");
 // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 // svg
 //   .append("defs")
@@ -558,18 +557,19 @@ var tooltip = d3
 
 function runBarPotential(dataset, newCityData) {
   //included filtered dataset and view box
-  //onsole.log(dataset);
+  // console.log(dataset);
   const sortedData = dataset
     // .sort(function(b, a) {
     //   return a.count - b.count;
     // })// to sort by size
+    .filter(x => x._id)
+    .filter(x => x.count)
     .sort(function(a, b) {
       var textA = a._id.toUpperCase();
       var textB = b._id.toUpperCase();
-      return textA < textB ? -1 : textA > textB ? 1 : 0;
-    })
-    .filter(x => x._id)
-    .filter(x => x.count);
+      return textA === textB ? 0 : textA < textB ? -1 : 1;
+    });
+  // console.log(sortedData);
   // })
   sortedData[0].count = sortedData[0].count / bronxArea;
   sortedData[1].count = sortedData[1].count / brooklynArea;
@@ -620,7 +620,7 @@ function runBarPotential(dataset, newCityData) {
     .enter()
     .append("rect")
     .attr("width", xScale.bandwidth())
-    .style("opacity", 0.7)
+    .style("opacity", 0.8)
     .attr(
       "fill",
       //"url(#pattern-chevron)")
@@ -650,7 +650,7 @@ function runBarPotential(dataset, newCityData) {
     })
     .on("mouseout", function(d) {
       tooltip.style("opacity", 0);
-      d3.select(this).style("opacity", 0.7);
+      d3.select(this).style("opacity", 0.8);
     })
     // .attr("fill", d => {
     //   var color = d.count * 10;
