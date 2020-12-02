@@ -8,7 +8,7 @@ module.exports = function(app, db, dir) {
     //res.sendFile(dir + "/app/assets/views/index.html");
     //res.json({ message: "slash" });
   });
-
+//server side rendering--> what is built by default. You could also have server rendered data
   app.get("/index", (req, res) => {
     res.render("index.html");
   });

@@ -48,8 +48,8 @@
   <body>
     <div class="nav-bar">
       <h1>
-        Greening From the Rooftops
-        <span id="subheader"> Calculating NYC's Green Roof Potential </span>
+        Estimated Potential for Green Roofs in New York City
+        <!-- <span id="subheader"> Calculating NYC's Green Roof Potential </span> -->
       </h1>
       <div id="extras">
         <div class="extra"><p id="explore-map">Map</p></div>
@@ -70,24 +70,24 @@
         <li>
           Year of Construction:
           <span class="bullets">
-            Rooftops on buildings built before the 1970s have higher load
-            bearing capacity.
+            Rooftops on buildings built before the 1970s are assumed to have a
+            higher load bearing capacity, more likely to support a green roof.
           </span>
         </li>
         <br />
         <li>
-          Slope Angle:
+          Roof Slope:
           <span class="bullets"
-            >Relatively flat rooftops of slope less than 9.5 degrees are
-            required.
+            >Only relatively flat rooftops of slope less than 9.5 degrees are
+            included. While it may be possible to install green roofs on steeper
+            slopes, it can be more challeging and expensive.
           </span>
         </li>
         <br />
         <li>
           Roof Surface Area:
           <span class="bullets"
-            >Rooftops at least 100 ft<sup>2</sup> were selected to make
-            installation feasible.
+            >We only considered rooftops 100 ft<sup>2</sup> and larger.
           </span>
         </li>
       </ul>
@@ -98,32 +98,36 @@
         onclick="document.getElementById('benefits-info').style.display='none'"
         >&times;</span
       >
-      <p class="intro-line">Environmental Benefits Explained</p>
+      <p class="intro-line">Potential Environmental Benefits Explained</p>
       <ul class="GR">
         <li>
           Heat Mitigation:
           <span class="bullets">
-            Cities are hotter than the surrounding suburbs due to the concrete
-            makeup and their higher energy consumption. High temperatures are a
-            public health issue in many cities, and especially in New York.
+            Cities are hotter than the surrounding regions due to a combination
+            of of asphalt, concrete, and buildings that trap heat in the day,
+            and waste heat from vehicles, building cooling systems, among other
+            factors. High temperatures are a public health issue in many cities,
+            and especially in New York.
           </span>
         </li>
         <br />
         <li>
           Stormwater Management:
           <span class="bullets"
-            >Soil absorbs stormwater runoff, unlike concrete -- NYC has a
-            Combined Sewer System, and when it is flooded from heavy rain, it
-            spills wastewater into surrounding water bodies.
+            >Soil absorbs stormwater runoff, unlike concrete -- large portions
+            of NYC have a Combined Sewer System, and when the system is
+            overwhelmed by precipitation, it discharges stormwater and waste
+            from homes and businesses into the local surrounding water bodies.
           </span>
         </li>
         <br />
         <li>
           Increased Biodiversity:
-          <span class="bullets"
-            >In order to continue to have clean air, clean water, and a balanced
-            ecosystem, cities need more biodiversity. Green roofs increase
-            biodiversity by providing habitat.
+          <span class="bullets"></span>
+            While many parts of cities can be relatively inhospitable for other
+            species, green roofs can serve as valuable habitats for things like
+            pollinating insects, that reside in NYC or migrate through, and
+            bats.
           </span>
         </li>
       </ul>
@@ -268,7 +272,7 @@
               onmouseover="document.getElementById('green-roof-info').style.display='block'"
               onmouseout="document.getElementById('green-roof-info').style.display='none'"
             >
-              Green Roof Potential
+              Estimated Green Roof Potential
               <svg
                 class="icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -292,8 +296,10 @@
 
           <div class="tops">
             <p class="equation">
-              Potential is the estimated percentage of roofs that are suitable
-              for green roofs. NYC has a green roof potential of
+              Potential is the percentage of roofs that may be suitable for
+              green roofs given a set of criteria related to how likely
+              buildings are able to support them. NYC has an overall green roof
+              potential of
               <span id="filteredPercentage">33.7%</span>.
             </p>
 
@@ -390,7 +396,6 @@
             <img src="./images/legend2.png" width="100%" />
           </div>
         </div>
-
         <!-- </div> -->
       </section>
     </main>
