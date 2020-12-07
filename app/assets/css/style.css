@@ -132,6 +132,15 @@ h2 {
   line-height: 1.5;
   text-align: center;
 }
+.intro-line sub {
+  font-size: 0.5em;
+}
+.bottom-note sub {
+  font-size: 0.5em;
+}
+.bottom-note {
+  font-size: 0.9em;
+}
 .bullets {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.7);
