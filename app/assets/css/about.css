@@ -18,6 +18,14 @@ ul {
   margin: 0;
   font-family: "Lato", sans-serif;
 }
+.nav-bar {
+  height: 5vh;
+  /* background: #058500; */
+  /* background: linear-gradient(-90deg, #6ae27a, #058500); */
+  background: rgb(40, 40, 70);
+  box-shadow: rgba(0, 0, 0, 0.97) 0px 11px 40px -11px inset;
+  display: flex;
+}
 #container {
   padding: 20px;
   padding-left: 30px;
@@ -29,13 +37,30 @@ ul {
   margin-top: 20px;
   margin-bottom: 8px;
 }
-.nav-bar {
-  height: 5vh;
-  /* background: #058500; */
-  /* background: linear-gradient(-90deg, #6ae27a, #058500); */
-  background: rgb(40, 40, 70);
-  box-shadow: rgba(0, 0, 0, 0.97) 0px 11px 40px -11px inset;
-  display: flex;
+h1 {
+  text-align: left;
+  padding: 10px;
+  padding-left: 15px;
+  font-size: 17px;
+  width: 600px;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 3px solid #5cff87;
+}
+
+#subheader {
+  font-size: 15px;
+  padding-left: 15px;
+  color: rgba(93, 95, 122);
+  font-style: italic;
+}
+h2 {
+  text-align: left;
+  /* border-bottom: 1px solid rgba(93, 95, 122); */
+  font-size: 22px;
+  width: 350px;
+  padding: 0px 5px 9px 12px;
+  margin-bottom: 24px;
+  border-bottom: 3px solid #5cff87;
 }
 
 #extras {
@@ -65,29 +90,4 @@ a {
 #about {
   border-bottom: 3px solid rgba(0, 230, 15, 0.5);
   color: rgba(255, 255, 255, 0.7);
-}
-
-h1 {
-  text-align: left;
-  padding: 10px;
-  padding-left: 30px;
-  font-size: 17px;
-  width: 600px;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-#subheader {
-  font-size: 15px;
-  padding-left: 15px;
-  color: rgba(93, 95, 122);
-  font-style: italic;
-}
-h2 {
-  text-align: left;
-  /* border-bottom: 1px solid rgba(93, 95, 122); */
-  font-size: 22px;
-  width: 350px;
-  padding: 0px 5px 9px 12px;
-  margin-bottom: 24px;
-  border-bottom: 3px solid #5cff87;
 }
